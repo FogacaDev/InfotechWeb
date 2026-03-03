@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
   <!-- Fontes e ícones -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -18,7 +21,7 @@
 
     body {
       background-color: #0a0c0f;
-      background-image: 
+      background-image:
         linear-gradient(45deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(-45deg, rgba(255, 0, 255, 0.03) 1px, transparent 1px);
       background-size: 30px 30px;
@@ -30,16 +33,25 @@
     body::before {
       content: "";
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,255,255,0.02) 2px, transparent 3px, transparent 5px);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0px, rgba(0, 255, 255, 0.02) 2px, transparent 3px, transparent 5px);
       pointer-events: none;
       z-index: 999;
     }
 
     .container {
+      width: 100%;
       max-width: 1400px;
       margin: 0 auto;
-      padding: 2rem 2rem 3rem;
+      padding: 2rem clamp(1rem, 4vw, 2rem);
+    }
+
+    html,
+    body {
+      overflow-x: hidden;
     }
 
     /* HEADER MELHORADO */
@@ -86,8 +98,15 @@
     }
 
     @keyframes neonPulse {
-      0%, 100% { filter: drop-shadow(0 0 15px #0ff); }
-      50% { filter: drop-shadow(0 0 25px #f0f); }
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 15px #0ff);
+      }
+
+      50% {
+        filter: drop-shadow(0 0 25px #f0f);
+      }
     }
 
     .tagline {
@@ -176,8 +195,17 @@
     }
 
     @keyframes borderPulse {
-      0%, 100% { border-color: #f0f; box-shadow: 0 0 20px #f0f; }
-      50% { border-color: #0ff; box-shadow: 0 0 40px #0ff; }
+
+      0%,
+      100% {
+        border-color: #f0f;
+        box-shadow: 0 0 20px #f0f;
+      }
+
+      50% {
+        border-color: #0ff;
+        box-shadow: 0 0 40px #0ff;
+      }
     }
 
     /* CARD HEADER - COMPLETO */
@@ -262,6 +290,7 @@
       border-left: 8px solid #f0f;
       padding-left: 20px;
       text-shadow: 0 0 8px cyan;
+      flex-wrap: wrap;
     }
 
     /* SEÇÃO SOBRE */
@@ -369,7 +398,7 @@
     }
 
     .project-card {
-      width: 340px;
+      width: clamp(260px, 80vw, 340px);
       background: #0f1219;
       border: 2px solid #0ff;
       border-radius: 28px;
@@ -434,8 +463,13 @@
       box-shadow: 0 0 30px #f0f;
     }
 
-    .arrow-left { left: -20px; }
-    .arrow-right { right: -20px; }
+    @media (max-width: 600px) {
+      .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+      }
+    }
 
     /* PROCESSO */
     .process-section {
@@ -489,40 +523,90 @@
       backdrop-filter: blur(8px);
     }
 
-    .email, .telefone {
+    .email,
+    .telefone {
       cursor: pointer;
       transition: all 0.3s ease;
     }
 
-    .email:hover, .telefone:hover {
+    .email:hover,
+    .telefone:hover {
       transform: scale(1.1);
       text-shadow: 0 0 20px currentColor;
     }
 
     /* RESPONSIVIDADE */
-    @media (max-width: 800px) {
-      .nome-dono { font-size: 2.4rem; }
-      .about-section { grid-template-columns: 1fr; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
-      .arrow-left { left: -10px; }
-      .arrow-right { right: -10px; }
+    @media (max-width: 600px) {
+
+      .section-title {
+        font-size: 1.6rem;
+        gap: 8px;
+      }
+
+      .about-section {
+        padding: 1.2rem;
+        border-radius: 20px;
+      }
+
+
+      .contact-cyber {
+        border-radius: 30px;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .contato-flash {
+        padding: 1rem;
+        border-radius: 30px;
+      }
+
+
+      .nome-dono {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+      }
+
+      .hero::after {
+        display: none;
+      }
+
+
+
+      .about-section {
+        grid-template-columns: 1fr;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .arrow-left {
+        left: 5px;
+      }
+
+      .arrow-right {
+        right: 5px;
+      }
     }
 
     @media (max-width: 500px) {
-      .process-grid { grid-template-columns: 1fr; }
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <!-- HEADER -->
     <div class="hero">
       <h1 class="nome-dono">InfoTech Solutions</h1>
       <div class="tagline">
-        <i class="fas fa-cogs" style="color:#0ff;"></i> 
+        <i class="fas fa-cogs" style="color:#0ff;"></i>
         RENAN FOGAÇA • DESENVOLVEDOR FULL-STACK
       </div>
-      
+
       <!-- ESTATÍSTICAS -->
       <div class="stats-container">
         <div class="stat-item">
@@ -545,7 +629,7 @@
         <span class="solucao-item"><i class="fas fa-database"></i> Integração com Banco de Dados</span>
         <span class="solucao-item"><i class="fas fa-mobile-alt"></i> Apps Responsivos</span>
       </div>
-      
+
       <div class="contato-flash">
         <i class="fas fa-bolt"></i> ORÇAMENTO RÁPIDO! <i class="fas fa-bolt"></i>
         <span class="email"><i class="fas fa-envelope"></i> renan.fogaca@hotmail.com</span>
@@ -557,7 +641,9 @@
     <div class="about-section">
       <div class="about-text">
         <h3><i class="fas fa-user-astronaut" style="color:#0ff;"></i> Sobre Renan Fogaça</h3>
-        <p>Especialista em criar soluções digitais que combinam design futurista com funcionalidade robusta. Meu objetivo é transformar suas ideias em realidade com código limpo, performance e aquele visual cyberpunk que você sempre sonhou.</p>
+        <p>Especialista em criar soluções digitais que combinam design futurista com funcionalidade robusta. Meu
+          objetivo é transformar suas ideias em realidade com código limpo, performance e aquele visual cyberpunk que
+          você sempre sonhou.</p>
         <p>💡 +5 anos transformando linhas de código em experiências digitais memoráveis.</p>
         <div class="tech-tags">
           <span class="tech-tag">#React</span>
@@ -568,7 +654,8 @@
         </div>
       </div>
       <div class="testimonial-card">
-        <p>"O Renan conseguiu captar exatamente a essência da minha marca! O site ficou moderno, rápido e com um visual que meus clientes amam. Atendimento nota 1000!"</p>
+        <p>"O Renan conseguiu captar exatamente a essência da minha marca! O site ficou moderno, rápido e com um visual
+          que meus clientes amam. Atendimento nota 1000!"</p>
         <div class="testimonial-author">
           <div class="author-avatar"></div>
           <div>
@@ -596,11 +683,13 @@
                 <span class="project-name">Portfolio Profissional</span>
                 <i class="fab fa-github github-icon"></i>
               </div>
-              <iframe class="preview-iframe" src="https://fogacadev.github.io/QuantumLuckWeb/" sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
+              <iframe class="preview-iframe" src="https://fogacadev.github.io/QuantumLuckWeb/"
+                sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
               <div class="preview-label"><i class="fas fa-eye"></i> preview ao vivo</div>
               <div class="card-footer">
                 <span class="status"><i class="fas fa-circle"></i> online</span>
-                <a href="https://fogacadev.github.io/QuantumLuckWeb" target="_blank" class="btn-pages">ver projeto <i class="fas fa-external-link-alt"></i></a>
+                <a href="https://fogacadev.github.io/QuantumLuckWeb" target="_blank" class="btn-pages">ver projeto <i
+                    class="fas fa-external-link-alt"></i></a>
               </div>
             </div>
             <!-- Card 2 -->
@@ -609,11 +698,13 @@
                 <span class="project-name">Quantum Luck Web</span>
                 <i class="fab fa-github github-icon"></i>
               </div>
-              <iframe class="preview-iframe" src="https://infotech-curriculum-generator.web.app/" sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
+              <iframe class="preview-iframe" src="https://infotech-curriculum-generator.web.app/"
+                sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
               <div class="preview-label"><i class="fas fa-eye"></i> preview ao vivo</div>
               <div class="card-footer">
                 <span class="status"><i class="fas fa-circle"></i> online</span>
-                <a href="https://infotech-curriculum-generator.web.app" target="_blank" class="btn-pages">ver projeto <i class="fas fa-external-link-alt"></i></a>
+                <a href="https://infotech-curriculum-generator.web.app" target="_blank" class="btn-pages">ver projeto <i
+                    class="fas fa-external-link-alt"></i></a>
               </div>
             </div>
             <!-- Card 3 -->
@@ -622,11 +713,13 @@
                 <span class="project-name">Gerador Currículos</span>
                 <i class="fab fa-github github-icon"></i>
               </div>
-              <iframe class="preview-iframe" src="https://fogacadev.github.io/portifolio/" sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
+              <iframe class="preview-iframe" src="https://fogacadev.github.io/portifolio/"
+                sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
               <div class="preview-label"><i class="fas fa-eye"></i> preview ao vivo</div>
               <div class="card-footer">
                 <span class="status"><i class="fas fa-circle"></i> online</span>
-                <a href="https://fogacadev.github.io/portifolio" target="_blank" class="btn-pages">ver projeto <i class="fas fa-external-link-alt"></i></a>
+                <a href="https://fogacadev.github.io/portifolio" target="_blank" class="btn-pages">ver projeto <i
+                    class="fas fa-external-link-alt"></i></a>
               </div>
             </div>
             <!-- Card 4 -->
@@ -635,11 +728,13 @@
                 <span class="project-name">Paulo WoodWork</span>
                 <i class="fab fa-github github-icon"></i>
               </div>
-              <iframe class="preview-iframe" src="https://fogacadev.github.io/Paulo-WoodWork/" sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
+              <iframe class="preview-iframe" src="https://fogacadev.github.io/Paulo-WoodWork/"
+                sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
               <div class="preview-label"><i class="fas fa-eye"></i> preview ao vivo</div>
               <div class="card-footer">
                 <span class="status"><i class="fas fa-circle"></i> online</span>
-                <a href="https://fogacadev.github.io/Paulo-WoodWork" target="_blank" class="btn-pages">ver projeto <i class="fas fa-external-link-alt"></i></a>
+                <a href="https://fogacadev.github.io/Paulo-WoodWork" target="_blank" class="btn-pages">ver projeto <i
+                    class="fas fa-external-link-alt"></i></a>
               </div>
             </div>
             <!-- Card 5 -->
@@ -648,11 +743,13 @@
                 <span class="project-name">Higitec</span>
                 <i class="fab fa-github github-icon"></i>
               </div>
-              <iframe class="preview-iframe" src="https://fogacadev.github.io/Higitec/" sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
+              <iframe class="preview-iframe" src="https://fogacadev.github.io/Higitec/"
+                sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
               <div class="preview-label"><i class="fas fa-eye"></i> preview ao vivo</div>
               <div class="card-footer">
                 <span class="status"><i class="fas fa-circle"></i> online</span>
-                <a href="https://fogacadev.github.io/Higitec" target="_blank" class="btn-pages">ver projeto <i class="fas fa-external-link-alt"></i></a>
+                <a href="https://fogacadev.github.io/Higitec" target="_blank" class="btn-pages">ver projeto <i
+                    class="fas fa-external-link-alt"></i></a>
               </div>
             </div>
             <!-- Card 6 -->
@@ -661,11 +758,13 @@
                 <span class="project-name">Milene Nutricionista</span>
                 <i class="fab fa-github github-icon"></i>
               </div>
-              <iframe class="preview-iframe" src="https://fogacadev.github.io/Milene-Santos-Nutricionista/" sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
+              <iframe class="preview-iframe" src="https://fogacadev.github.io/Milene-Santos-Nutricionista/"
+                sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
               <div class="preview-label"><i class="fas fa-eye"></i> preview ao vivo</div>
               <div class="card-footer">
                 <span class="status"><i class="fas fa-circle"></i> online</span>
-                <a href="https://fogacadev.github.io/Milene-Santos-Nutricionista" target="_blank" class="btn-pages">ver projeto <i class="fas fa-external-link-alt"></i></a>
+                <a href="https://fogacadev.github.io/Milene-Santos-Nutricionista" target="_blank" class="btn-pages">ver
+                  projeto <i class="fas fa-external-link-alt"></i></a>
               </div>
             </div>
             <!-- Card 7 -->
@@ -674,11 +773,13 @@
                 <span class="project-name">Drogaria Brasilina</span>
                 <i class="fab fa-github github-icon"></i>
               </div>
-              <iframe class="preview-iframe" src="https://fogacadev.github.io/drogaria_brasilina/" sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
+              <iframe class="preview-iframe" src="https://fogacadev.github.io/drogaria_brasilina/"
+                sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
               <div class="preview-label"><i class="fas fa-eye"></i> preview ao vivo</div>
               <div class="card-footer">
                 <span class="status"><i class="fas fa-circle"></i> online</span>
-                <a href="https://fogacadev.github.io/drogaria_brasilina" target="_blank" class="btn-pages">ver projeto <i class="fas fa-external-link-alt"></i></a>
+                <a href="https://fogacadev.github.io/drogaria_brasilina" target="_blank" class="btn-pages">ver projeto
+                  <i class="fas fa-external-link-alt"></i></a>
               </div>
             </div>
             <!-- Card 8 -->
@@ -687,11 +788,13 @@
                 <span class="project-name">Landing Page</span>
                 <i class="fab fa-github github-icon"></i>
               </div>
-              <iframe class="preview-iframe" src="https://fogacadev.github.io/landing-page-modelo/" sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
+              <iframe class="preview-iframe" src="https://fogacadev.github.io/landing-page-modelo/"
+                sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
               <div class="preview-label"><i class="fas fa-eye"></i> preview ao vivo</div>
               <div class="card-footer">
                 <span class="status"><i class="fas fa-circle"></i> online</span>
-                <a href="https://fogacadev.github.io/landing-page-modelo" target="_blank" class="btn-pages">ver projeto <i class="fas fa-external-link-alt"></i></a>
+                <a href="https://fogacadev.github.io/landing-page-modelo" target="_blank" class="btn-pages">ver projeto
+                  <i class="fas fa-external-link-alt"></i></a>
               </div>
             </div>
             <!-- Card 9 -->
@@ -700,11 +803,13 @@
                 <span class="project-name">Ferramentas para ágeis automatizadas</span>
                 <i class="fab fa-github github-icon"></i>
               </div>
-              <iframe class="preview-iframe" src="https://fogacadev.github.io/APR_Digital/" sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
+              <iframe class="preview-iframe" src="https://fogacadev.github.io/APR_Digital/"
+                sandbox="allow-scripts allow-same-origin" loading="lazy"></iframe>
               <div class="preview-label"><i class="fas fa-eye"></i> preview ao vivo</div>
               <div class="card-footer">
                 <span class="status"><i class="fas fa-circle"></i> online</span>
-                <a href="https://fogacadev.github.io/APR_Digital" target="_blank" class="btn-pages">ver projeto <i class="fas fa-external-link-alt"></i></a>
+                <a href="https://fogacadev.github.io/APR_Digital" target="_blank" class="btn-pages">ver projeto <i
+                    class="fas fa-external-link-alt"></i></a>
               </div>
             </div>
           </div>
@@ -750,13 +855,16 @@
     <!-- CONTATO -->
     <div class="contact-cyber">
       <i class="fas fa-bolt"></i>
-      <span class="email" onclick="copyToClipboard('renan.fogaca@hotmail.com')"><i class="far fa-envelope"></i> renan.fogaca@hotmail.com <span style="font-size: 0.8rem; color: #0ff;">(clique para copiar)</span></span>
-      <span class="telefone" onclick="copyToClipboard('(011) 99705-7953')"><i class="fas fa-mobile-alt"></i> (011) 99705-7953 <span style="font-size: 0.8rem; color: #0ff;">(clique para copiar)</span></span>
+      <span class="email" onclick="copyToClipboard('renan.fogaca@hotmail.com')"><i class="far fa-envelope"></i>
+        renan.fogaca@hotmail.com <span style="font-size: 0.8rem; color: #0ff;">(clique para copiar)</span></span>
+      <span class="telefone" onclick="copyToClipboard('(011) 99705-7953')"><i class="fas fa-mobile-alt"></i> (011)
+        99705-7953 <span style="font-size: 0.8rem; color: #0ff;">(clique para copiar)</span></span>
       <i class="fas fa-bolt"></i>
     </div>
 
     <div style="text-align: center; margin-top: 2rem; font-family: 'Orbitron'; opacity: 0.7; letter-spacing: 3px;">
-      <i class="fas fa-crown" style="color:#f0f;"></i> INFOTECH • SOLUÇÕES QUE BRILHAM NO ESCURO <i class="fas fa-crown" style="color:#0ff;"></i>
+      <i class="fas fa-crown" style="color:#f0f;"></i> INFOTECH • SOLUÇÕES QUE BRILHAM NO ESCURO <i class="fas fa-crown"
+        style="color:#0ff;"></i>
     </div>
   </div>
 
@@ -817,4 +925,5 @@
     }
   </script>
 </body>
+
 </html>
